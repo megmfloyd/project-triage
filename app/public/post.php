@@ -6,8 +6,8 @@ $db = DbConnection::getConnection();
 // Step 2: Create & run the query
   //creating the statement to get all the information from the db
 $stmt = $db->prepare(
-  'INSERT INTO PatientVisit(patientGuid, visitDescription, visitDateUtc, priority)
-  VALUES (?,?,?)'
+  'INSERT INTO Patient(patientGuid, firstName, lastName, dob, sexAtBirth, )
+  VALUES (?,?,?,?,?)'
 );
   //runs the query
 $stmt->execute({
@@ -20,4 +20,4 @@ $stmt->execute({
 
 //Output
 header('HTTP/1.1 303 See Other');
-header('Location: ../waiting/');
+header('Location: ../records/?guid'.$guid);
